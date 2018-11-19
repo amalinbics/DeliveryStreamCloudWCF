@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{89274EEA-C0D1-443A-A813-A441EBCBDAD8}"
+	ProjectSection(SolutionItems) = preProject
+		DeliveryStreamCloudWCF.vsmdi = DeliveryStreamCloudWCF.vsmdi
+		Local.testsettings = Local.testsettings
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStreamCloudWCF.Entities", "DeliveryStreamCloudWCF.Entities\DeliveryStreamCloudWCF.Entities.csproj", "{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStreamCloudWCF.DataAccess", "DeliveryStreamCloudWCF.DataAccess\DeliveryStreamCloudWCF.DataAccess.csproj", "{B6E64AB9-6D8D-4D57-A0D1-1550B2456CA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStreamCloudWCF.Service", "DeliveryStreamCloudWCF.Service\DeliveryStreamCloudWCF.Service.csproj", "{3CA2DF4A-D8BA-4495-BD1D-9509AA4208D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStreamCloudWCF.Utils", "DeliveryStreamCloudWCF.Utils\DeliveryStreamCloudWCF.Utils.csproj", "{6CE9ECC8-CBFE-4551-83CC-A92187330A5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DeliveryStreamCloudWCF.IISHost", "DeliveryStreamCloudWCF.IISHost\DeliveryStreamCloudWCF.IISHost.csproj", "{58269EC9-80C8-4690-A359-3D424F673505}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DeliveryStreamCloudWCF.Setup", "DeliveryStreamCloudWCF.Setup\DeliveryStreamCloudWCF.Setup.vdproj", "{E9F20A61-9BC7-419B-867C-F0D18446172A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E64AB9-6D8D-4D57-A0D1-1550B2456CA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E64AB9-6D8D-4D57-A0D1-1550B2456CA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E64AB9-6D8D-4D57-A0D1-1550B2456CA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E64AB9-6D8D-4D57-A0D1-1550B2456CA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA2DF4A-D8BA-4495-BD1D-9509AA4208D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA2DF4A-D8BA-4495-BD1D-9509AA4208D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA2DF4A-D8BA-4495-BD1D-9509AA4208D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA2DF4A-D8BA-4495-BD1D-9509AA4208D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CE9ECC8-CBFE-4551-83CC-A92187330A5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CE9ECC8-CBFE-4551-83CC-A92187330A5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CE9ECC8-CBFE-4551-83CC-A92187330A5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CE9ECC8-CBFE-4551-83CC-A92187330A5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58269EC9-80C8-4690-A359-3D424F673505}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58269EC9-80C8-4690-A359-3D424F673505}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58269EC9-80C8-4690-A359-3D424F673505}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58269EC9-80C8-4690-A359-3D424F673505}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9F20A61-9BC7-419B-867C-F0D18446172A}.Debug|Any CPU.ActiveCfg = Debug
+		{E9F20A61-9BC7-419B-867C-F0D18446172A}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = DeliveryStreamCloudWCF.vsmdi
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B1B96C57-A7E6-4D8D-88B9-A51C81620C84}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DeliveryStreamCloudWCF.Entities</RootNamespace>
+    <AssemblyName>DeliveryStreamCloudWCF.Entities</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AdverseCondition.cs" />
+    <Compile Include="BOLCompartments.cs" />
+    <Compile Include="BolHdrWagon.cs" />
+    <Compile Include="BolitemWagon.cs" />
+    <Compile Include="CompletedLoads.cs" />
+    <Compile Include="BolHdrXML.cs" />
+    <Compile Include="BolitemXML.cs" />
+    <Compile Include="DeliveryDetailsXML.cs" />
+    <Compile Include="DeliveryXMLResponse.cs" />
+    <Compile Include="DispatchChangeLoad.cs" />
+    <Compile Include="DSTWHistory.cs" />
+    <Compile Include="OEStatus.cs" />
+    <Compile Include="ShipmentXMLResponse.cs" />
+    <Compile Include="VehicleMeters.cs" />
+    <Compile Include="EODDetails.cs" />
+    <Compile Include="INSite.cs" />
+    <Compile Include="LoginHomeTerminalDetails.cs" />
+    <Compile Include="OrderItemDetails.cs" />
+    <Compile Include="Products.cs" />
+    <Compile Include="RemainingTimeSummary.cs" />
+    <Compile Include="OrderDispatchHistory.cs" />
+    <Compile Include="obj\ARShipTo_FromSites.cs" />
+    <Compile Include="BolHdr.cs" />
+    <Compile Include="Bolitem.cs" />
+    <Compile Include="Break.cs" />
+    <Compile Include="DriverLogStatus.cs" />
+    <Compile Include="FromSiteBusinessRule.cs" />
+    <Compile Include="Supplier.cs" />
+    <Compile Include="SupplierSupplypointList.cs" />
+    <Compile Include="SupplierSupplyPt.cs" />
+    <Compile Include="TWDeliveryDetails.cs" />
+    <Compile Include="VehicleCompartment.cs" />
+    <Compile Include="VersionTest.cs" />
+    <Compile Include="WarehouseLoad.cs" />
+    <Compile Include="CumulativeShiftSummaryResponse.cs" />
+    <Compile Include="CurrentShiftSummaryResponse.cs" />
+    <Compile Include="Customer.cs" />
+    <Compile Include="DeliveryDetails.cs" />
+    <Compile Include="DriverLogs.cs" />
+    <Compile Include="DriverSummary.cs" />
+    <Compile Include="Driving.cs" />
+    <Compile Include="GetDriverDetails.cs" />
+    <Compile Include="GetVehicleDetails.cs" />
+    <Compile Include="GPSHistory.cs" />
+    <Compile Include="Inspection.cs" />
+    <Compile Include="InspectionElements.cs" />
+    <Compile Include="Load.cs" />
+    <Compile Include="LoadStatusHistory.cs" />
+    <Compile Include="LoginHistory.cs" />
+    <Compile Include="LoginSession.cs" />
+    <Compile Include="LoginUser.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderFrt.cs" />
+    <Compile Include="OrderItem.cs" />
+    <Compile Include="OrderItemComponent.cs" />
+    <Compile Include="OrderNotes.cs" />
+    <Compile Include="OrderPickingDetails.cs" />
+    <Compile Include="OrderStatusHistory.cs" />
+    <Compile Include="PreDutyInspectionReport.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignatureImage.cs" />
+    <Compile Include="SleeperRig.cs" />
+    <Compile Include="Status.cs" />
+    <Compile Include="SummaryLogResponse.cs" />
+    <Compile Include="Vehicle.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DeliveryStreamCloudWCF.Entities.dll" />
+    <Content Include="bin\Debug\DeliveryStreamCloudWCF.Entities.pdb" />
+    <Content Include="bin\Release\DeliveryStreamCloudWCF.Entities.dll" />
+    <Content Include="bin\Release\DeliveryStreamCloudWCF.Entities.pdb" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
