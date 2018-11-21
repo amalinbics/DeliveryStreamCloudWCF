@@ -2057,6 +2057,29 @@ namespace DeliveryStreamCloudWCF.DataAccess
             ta.InsertQuery(bolHdrID, loadID, bolNo, image, bolDateTime, bolDatetTimeEnd, loginUserID, BOLWaitTime, BOLWaitTime_Comment, BOLWaitTime_Start, BOLWaitTime_End, TrailerCode, SupplierCode, SupplyPointCode);
         }
 
+        public static void SaveBolHdr(Guid bolHdrID, Guid loadID, String bolNo, byte[] image, DateTime bolDateTime, DateTime? bolDatetTimeEnd, Int32 loginUserID, Boolean BOLWaitTime, String BOLWaitTime_Comment, DateTime? BOLWaitTime_Start, DateTime? BOLWaitTime_End, ISession session, String TrailerCode, String SupplierCode, String SupplyPointCode, String VersionNo = "", byte IsUserAcknowledgedZeroQty = 0)
+        {
+            SqlCommand cmd = (SqlCommand)session.CreateCommand();
+            cmd.CommandText = "Cloud_AddBOLHdr";
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ID", bolHdrID);
+            cmd.Parameters.AddWithValue("@LoadID", loadID);
+            cmd.Parameters.AddWithValue("@BOLNo", bolNo);
+            cmd.Parameters.AddWithValue("@Image", image);
+            cmd.Parameters.AddWithValue("@Dttm", bolDateTime);
+            cmd.Parameters.AddWithValue("@DttmEnd", bolDatetTimeEnd);
+            cmd.Parameters.AddWithValue("@UpdatedBy", loginUserID);
+            cmd.Parameters.AddWithValue("@BOLWaitTime", BOLWaitTime);
+            cmd.Parameters.AddWithValue("@BOLWaitTime_Comment", BOLWaitTime_Comment);
+            cmd.Parameters.AddWithValue("@BOLWaitTime_Start", BOLWaitTime_Start);
+            cmd.Parameters.AddWithValue("@BOLWaitTime_End", BOLWaitTime_End);
+            cmd.Parameters.AddWithValue("@TrailerCode", TrailerCode);
+            cmd.Parameters.AddWithValue("@SupplierCode", SupplierCode);
+            cmd.Parameters.AddWithValue("@SupplyPointCode", SupplyPointCode);
+            cmd.Parameters.AddWithValue("@IsUserAcknowledgedZeroQty", IsUserAcknowledgedZeroQty);
+            cmd.ExecuteNonQuery();
+        }
+
         public static void AddBolDetailsTemp(Guid loadID, string componentsXML, ISession session, String VersionNo = "")
         {
             SqlCommand cmd = (SqlCommand)session.CreateCommand();

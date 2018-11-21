@@ -5555,7 +5555,8 @@ namespace DeliveryStreamCloudWCF.Service
 
                                                     //2014.03.18 Ramesh M, Added For CR#62719 added  TrailerCode in input parameters 
                                                     //09-23-2014  MadhuVenkat k - Added for CR#65002  added SupplierCode and SupplyPointCode.
-                                                    DALMethods.AddBolHdr(bolHdrID, loadID, lsBolHdrXML[i].BOLNo.ToString(), image, lsBolHdrXML[i].BOLDateTime, lsBolHdrXML[i].BOLDateTimeEnd, loginID, lsBolHdrXML[i].BOLWaitTime, lsBolHdrXML[i].BOLWaitTimeComment, lsBolHdrXML[i].BOLWaitTimeStart, lsBolHdrXML[i].BOLWaitTimeEnd, session, lsBolHdrXML[i].TrailerCode, lsBolHdrXML[i].SupplierCode, lsBolHdrXML[i].SupplyPointCode, VersionNo);
+                                                    Logging.WriteLog($"UserAcknowledgeZero - {lsBolHdrXML[i].ZBolitemXML[j].UserAcknowledgeZero}",EventLogEntryType.Information);
+                                                    DALMethods.SaveBolHdr(bolHdrID, loadID, lsBolHdrXML[i].BOLNo.ToString(), image, lsBolHdrXML[i].BOLDateTime, lsBolHdrXML[i].BOLDateTimeEnd, loginID, lsBolHdrXML[i].BOLWaitTime, lsBolHdrXML[i].BOLWaitTimeComment, lsBolHdrXML[i].BOLWaitTimeStart, lsBolHdrXML[i].BOLWaitTimeEnd, session, lsBolHdrXML[i].TrailerCode, lsBolHdrXML[i].SupplierCode, lsBolHdrXML[i].SupplyPointCode, VersionNo, lsBolHdrXML[i].ZBolitemXML[j].UserAcknowledgeZero);
                                                 }
                                                 lsBolHdrXML[i].ZBolitemXML[j].ComponentNo = lsBolHdrXML[i].ZBolitemXML[j].ComponentNo == 0 ? 1 : lsBolHdrXML[i].ZBolitemXML[j].ComponentNo;
 

@@ -142,5 +142,12 @@ namespace DeliveryStreamCloudWCF.Entities
             get;
             set;
         }
+
+        [DataMember]
+        public byte UserAcknowledgeZero
+        {
+            get;
+            set;
+        }
     }
 }
