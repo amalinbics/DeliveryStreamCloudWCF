@@ -93,7 +93,7 @@ namespace DeliveryStreamCloudWCF.Service
         /// <returns></returns>
 
         [OperationContract]
-        String CheckUserLogin3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "");
+        String CheckUserLogin3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "",String AppInstalledON = "");
 
         // 2014.02.10 Ramesh M Added TrailerCode For CR#62211
         /// <summary>
@@ -111,7 +111,7 @@ namespace DeliveryStreamCloudWCF.Service
         /// <param name="GMT"></param>
         /// <returns></returns>
         [OperationContract]
-        String CheckUserLogin4(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "");
+        String CheckUserLogin4(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "", String AppInstalledON = "");
         /// <summary>
         /// CheckCustomerLogin
         /// Function to validate customer login

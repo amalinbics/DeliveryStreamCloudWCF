@@ -142,7 +142,7 @@ namespace DeliveryStreamCloudWCF.Service
         // 2013.11.27 FSWW, Ramesh M Added For CR#60210 Added deviceID in parameter
         // 2013.12.04 FSWW, Ramesh M Added For CR#61305 Added GMT in parameter
         // 2014.02.10 Ramesh M Added TrailerCode For CR#62211
-        public String CheckUserLogin3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "")
+        public String CheckUserLogin3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "",String AppInstalledON = "")
         {
 
             OperationContext context = OperationContext.Current;
@@ -152,7 +152,7 @@ namespace DeliveryStreamCloudWCF.Service
             String sIPAndPort = endpointProperty.Address.ToString() + " - " + endpointProperty.Port.ToString();
             //Logging.WriteLog("IOS Version- " + IOSVersion , System.Diagnostics.EventLogEntryType.Error);
 
-            String sGuidAndUserType = validateUser3(UserName, vehicleID, password, companyID, deviceToken, deviceTime, DateTime.Now, true, VersionNo, UserType, DeviceID, GMT, TrailerCode, IOSVersion == null ? "" : IOSVersion);
+            String sGuidAndUserType = validateUser3(UserName, vehicleID, password, companyID, deviceToken, deviceTime, DateTime.Now, true, VersionNo, UserType, DeviceID, GMT, TrailerCode, IOSVersion == null ? "" : IOSVersion, AppInstalledON == null ? "" : AppInstalledON);
 
             Int32 UserDriverID = 0;
             Int32 UserVehileID = 0;
@@ -245,7 +245,7 @@ namespace DeliveryStreamCloudWCF.Service
         /// <param name="DeviceID"></param>
         /// <param name="GMT"></param>
         /// <returns></returns>
-        public String CheckUserLogin4(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "")
+        public String CheckUserLogin4(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, String VersionNo, String UserType, String DeviceID, DateTime GMT, String TrailerCode, String IOSVersion = "", String AppInstalledON = "")
         {
             OperationContext context = OperationContext.Current;
             System.ServiceModel.Channels.MessageProperties messageProperties = context.IncomingMessageProperties;
@@ -276,9 +276,9 @@ namespace DeliveryStreamCloudWCF.Service
                 CustomizedStatusViewFalg = "N";
             }
 
-            if ((ServerVersion.ToLower() == VersionNo.ToLower()))
+            if ( Convert.ToDouble(ServerVersion) <= Convert.ToDouble(VersionNo))
             {
-                String sGuidAndUserType = validateUser3(UserName, vehicleID, password, companyID, deviceToken, deviceTime, DateTime.Now, true, VersionNo, UserType, DeviceID, GMT, TrailerCode, IOSVersion == null ? "" : IOSVersion);
+                String sGuidAndUserType = validateUser3(UserName, vehicleID, password, companyID, deviceToken, deviceTime, DateTime.Now, true, VersionNo, UserType, DeviceID, GMT, TrailerCode, IOSVersion == null ? "" : IOSVersion, AppInstalledON == null ? "" : AppInstalledON);
 
                 if (UserType.ToLower() == "g")
                 {
@@ -4639,18 +4639,17 @@ namespace DeliveryStreamCloudWCF.Service
                 {
                 }
                 session = GetSession();
-                Logging.LogInfoAboutCallingFunction(" Before ValidateCustomerLogin : CustomerID-" + companyID + "\n");
+               
                 if (ValidateCustomerLogin(companyID, password, VersionNo))
                 {
-                    Logging.LogInfoAboutCallingFunction(" Before GetLoads : CustomerID-" + companyID + "\n");
+               
                     List<Load> existingLoads = DALMethods.GetLoads(false, 60, 0, companyID, Guid.Empty, load.LoadNo, string.Empty, 0, 0, false, false, Convert.ToDateTime("1/1/1753 12:00:00 AM"), session, VersionNo);
                     if (existingLoads.Count > 0)
                     {
                         foreach (Load existingLoad in existingLoads)
                         {
-                            Logging.LogInfoAboutCallingFunction(" Before UpdatedDeletedLoads : CustomerID-" + companyID + "\n");
-                            DALMethods.UpdatedDeletedLoads(existingLoad.ID, DateTime.Now, session, VersionNo);
-                            Logging.LogInfoAboutCallingFunction(" After UpdatedDeletedLoads : CustomerID-" + companyID + "\n");
+                          
+                            DALMethods.UpdatedDeletedLoads(existingLoad.ID, DateTime.Now, session, VersionNo);                          
                         }
                     }
 

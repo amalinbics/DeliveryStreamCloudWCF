@@ -545,7 +545,7 @@ namespace DeliveryStreamCloudWCF.Service
         ///  2013.11.27 FSWW, Ramesh M Added For CR#60210 Added deviceID in parameter
         ///  2013.12.04 FSWW, Ramesh M Added For CR#61305 Added GMT in parameter
         ///  2014.02.10 Ramesh M Added TrailerCode For CR#62211
-        protected String validateUser3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, DateTime dateTime, bool isNewLogin, String VersionNo, String UserType, String DeviceID, DateTime GMT,String TrailerCode, String IOSVersion="")
+        protected String validateUser3(String UserName, String vehicleID, String password, String companyID, String deviceToken, DateTime deviceTime, DateTime dateTime, bool isNewLogin, String VersionNo, String UserType, String DeviceID, DateTime GMT,String TrailerCode, String IOSVersion="",String AppInstalledON = "")
         {
             Guid sessionID = new Guid();
             String sUserType=null;
@@ -553,8 +553,7 @@ namespace DeliveryStreamCloudWCF.Service
             session = GetSession();
             //2013.06-21 Fsww Ramesh M Added For CR#?.. To Validate application Version in Database
             //if (DataAccess.DALMethods.GetVersionNo(VersionNo,session)>0)
-            //{
-
+            //{           
             sUserType = ValidateUserLogin3(UserName, password, companyID, vehicleID, UserType, VersionNo);
             // 2014.01.28 Ramesh M Added For CR#62026 Prompt to update the version
             if ((VersionNo != "1.27") && ((sUserType.ToLower() == "d") || (sUserType.ToLower() == "w") || (sUserType.ToLower() == "g")))
@@ -600,8 +599,9 @@ namespace DeliveryStreamCloudWCF.Service
                             // 2014.02.10 Ramesh M Added TrailerCode For CR#62211
                             history.TrailerCode = TrailerCode;
                             history.IOSVersion = IOSVersion;
-                            DataAccess.DALMethods.AddLoginHistory(history, session, VersionNo);
-
+                           
+                            DataAccess.DALMethods.InsertLoginHistory(history, session, VersionNo,AppInstalledON);
+                           
 
                             Entities.LoginSession loginSession = new Entities.LoginSession();
                             loginSession.SessionID = sessionID;

@@ -519,7 +519,7 @@ namespace DeliveryStreamCloudWCF.DataAccess
                     }
 
                     load.LastUpdatedTime = (from d in lstLoads select d.LastUpdatedTime).Max();
-                    
+
                     //if(load.IsDeleted == true)
                     //{
                     //    Logging.LogInfoAboutCallingFunction("GetLoads: Deleted LoadNo - " + load.LoadNo);
@@ -942,8 +942,8 @@ namespace DeliveryStreamCloudWCF.DataAccess
         {
             OrderItemTableAdapter ta = new OrderItemTableAdapter();
             ta.CurrentConnection = session;
-         //   List<OrderItem> lstOrderitem = ta.GetDataByDetails(orderID).Select().Cast<DAL.OrderItemRow>().OrderBy(x => x.OrderID).ThenBy(x => x.SysTrxLine).ToList().ToEntities();
-           
+            //   List<OrderItem> lstOrderitem = ta.GetDataByDetails(orderID).Select().Cast<DAL.OrderItemRow>().OrderBy(x => x.OrderID).ThenBy(x => x.SysTrxLine).ToList().ToEntities();
+
             List<OrderItem> lstOrderitem = ta.GetDataByDetails(orderID).Select().Cast<DAL.OrderItemRow>().OrderBy(x => x.OrderID).ThenBy(x => x.SysTrxLine).ToList().ToEntities();
             if (includeOrderItems)
             {
@@ -1474,7 +1474,7 @@ namespace DeliveryStreamCloudWCF.DataAccess
         {
             LoadTableAdapter ta = new LoadTableAdapter();
             ta.CurrentConnection = session;
-            int stats = ta.UpdateTime(DateTime.Now,deviceDateTime, loadID);
+            int stats = ta.UpdateTime(DateTime.Now, deviceDateTime, loadID);
             return stats > 0;
         }
 
@@ -2822,6 +2822,7 @@ namespace DeliveryStreamCloudWCF.DataAccess
             InvalidateDeviceToken(history.DeviceToken, session);
             LoginHistoryTableAdapter ta = new LoginHistoryTableAdapter();
             ta.CurrentConnection = session;
+
             // 2013.12.04 FSWW, Ramesh M Added For CR#61305 Added GMT in parameter
             // 2014.02.10 Ramesh M Added TrailerCode For CR#62211
             ta.InsertQuery(history.LoginID, history.VehicleID, history.CustomerID, history.DeviceID, history.DeviceToken, history.DateTime, history.IsValidToken, history.DeviceTime, history.SessionID, history.GMT, history.TrailerCode, VersionNo, history.IOSVersion);
@@ -4052,7 +4053,7 @@ namespace DeliveryStreamCloudWCF.DataAccess
                 cmd.CommandText = "Cloud_IsEnableRemoveLoad";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ClientID", customerId);
-                
+
                 con.Open();
 
                 object result = cmd.ExecuteScalar();
@@ -4094,13 +4095,13 @@ namespace DeliveryStreamCloudWCF.DataAccess
                 {
                     CustomizedStatusViewFlag = dt.Rows[0]["EnableCustomizedStatusView"].ToString();
                 }
-               
+
                 Logging.WriteLog(string.Format("CustomizedStatusViewFlag = {0}", CustomizedStatusViewFlag), System.Diagnostics.EventLogEntryType.Information);
             }
             catch (Exception ex)
             {
                 Logging.LogError(ex, string.Format("CustomizedStatusViewFlag - {0}", ex.Message));
-            }            
+            }
             return CustomizedStatusViewFlag;
         }
 
@@ -4111,7 +4112,7 @@ namespace DeliveryStreamCloudWCF.DataAccess
             try
             {
 
-                DataTable dtOEStatus = new DataTable();               
+                DataTable dtOEStatus = new DataTable();
                 SqlCommand cmd = (SqlCommand)session.CreateCommand();
 
                 cmd.CommandText = "Cloud_GetOEStatus";
@@ -4120,9 +4121,9 @@ namespace DeliveryStreamCloudWCF.DataAccess
 
                 SqlDataAdapter adp = new SqlDataAdapter();
                 adp.SelectCommand = cmd;
-                
+
                 adp.Fill(dtOEStatus);
-               
+
 
                 if (dtOEStatus != null && dtOEStatus.Rows.Count > 0)
                 {
@@ -4189,6 +4190,41 @@ namespace DeliveryStreamCloudWCF.DataAccess
 
         }
 
+        public static void InsertLoginHistory(LoginHistory history, ISession session, String VersionNo, String AppInstalledON = "")
+        {
+            SqlConnection con = new SqlConnection(session.ConnectionString);
+            try
+            {
+                
+                SqlCommand cmd = (SqlCommand)session.CreateCommand();
+                cmd.CommandText = "Cloud_AddLoginHistory";
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@LoginID", history.LoginID);
+                cmd.Parameters.AddWithValue("@VehicleID", history.VehicleID);
+                cmd.Parameters.AddWithValue("@CustomerID", history.CustomerID); 
+                cmd.Parameters.AddWithValue("@DeviceID", history.DeviceID);
+                cmd.Parameters.AddWithValue("@DeviceToken", history.DeviceToken);
+                cmd.Parameters.AddWithValue("@DateTime", history.DateTime);
+                cmd.Parameters.AddWithValue("@IsValidToken", history.IsValidToken);
+                cmd.Parameters.AddWithValue("@DeviceTime", history.DeviceTime);
+                cmd.Parameters.AddWithValue("@SessionID", history.SessionID);
+                cmd.Parameters.AddWithValue("@GMT", history.GMT);               
+                cmd.Parameters.AddWithValue("@TrailerCode", history.TrailerCode);
+                cmd.Parameters.AddWithValue("@Version", VersionNo);               
+                cmd.Parameters.AddWithValue("@IOSVersion", history.IOSVersion);
+                cmd.Parameters.AddWithValue("@AppInstalledON", AppInstalledON);
+
+
+                int rowCount = cmd.ExecuteNonQuery();
+               
+
+
+            }
+            catch (Exception ex)
+            {
+                Logging.LogError(ex, string.Format("InsertLoginHistory - {0}", ex.Message));
+            }
+        }
         public static string GetDataToDeleteOldDataFromApp(string customerId, ISession session, string version)
         {
             string GetDataToDeleteOldDataFromAppInDays = string.Empty;
